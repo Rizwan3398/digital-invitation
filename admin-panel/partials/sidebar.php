@@ -20,7 +20,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Category</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="create-category.php" class="dropdown-item">Create Category</a>
-                            <a href="mange-category.php" class="dropdown-item">Manage Category</a>
+                            <a href="manage-category.php" class="dropdown-item">Manage Category</a>
                         </div>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>

@@ -1,4 +1,5 @@
 <?php session_start();
+if(isset($_SESSION['admin']) && empty($_SESSION['admin'])){
 require_once 'partials/db.php';
 require_once 'partials/header.php';
 
@@ -53,4 +54,8 @@ if (isset($_POST['submit'])) {
 </div>
 <!-- Sign In End -->
 
-<?php require_once 'partials/header-end.php'; ?>
+<?php require_once 'partials/header-end.php';
+} else{
+    header("Location: dashboard.php");
+}
+?>
