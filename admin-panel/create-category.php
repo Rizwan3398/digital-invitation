@@ -8,9 +8,9 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
     require_once 'partials/navbar.php';
 
     if (isset($_GET['id'])) {
-        $query = "SELECT * FROM `category` WHERE `id`='".$_GET['id']."'";
+        $query = "SELECT * FROM `category` WHERE `id`='" . $_GET['id'] . "'";
         $result = mysqli_query($conn, $query);
-        if($row = mysqli_fetch_assoc($result)){
+        if ($row = mysqli_fetch_assoc($result)) {
             $category_name = $row['category_name'];
             $category_price = $row['category_price'];
         }
@@ -26,7 +26,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
             $error2 = "Category price is required";
         }
         if ($category_name != '' && $category_price != '') {
-            $sql = "INSERT INTO `category` (`category_name`, `category_price`) VALUES ('$category_name', '$category_price')";
+            $sql = "INSERT INTO `category` (`category_name`, `price`) VALUES ('$category_name', '$category_price')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 header('Location: manage-category.php');
@@ -37,7 +37,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
         }
     }
     ob_end_flush(); // End output buffering and flush output
-    ?>
+?>
     <!-- Form Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
@@ -49,12 +49,14 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
                         <div class="mb-3">
                             <p class="text-danger"><?= isset($error1) && $error1 != '' ? $error1 : "" ?></p>
                             <label for="exampleInputEmail1" class="form-label">Category Name</label>
-                            <input type="text" class="form-control" name="category_name" value="<?= isset($category_name) ? $category_name : ""?>">
+                            <input type="text" class="form-control" name="category_name"
+                                value="<?= isset($category_name) ? $category_name : "" ?>">
                         </div>
                         <div class="mb-3">
                             <p class="text-danger"><?= isset($error2) && $error2 != '' ? $error2 : "" ?></p>
                             <label for="exampleInputPassword1" class="form-label">Category Price</label>
-                            <input type="text" class="form-control" name="category_price" value="<?= isset($category_price) ? $category_price : ""?>">
+                            <input type="text" class="form-control" name="category_price"
+                                value="<?= isset($category_price) ? $category_price : "" ?>">
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -66,7 +68,7 @@ if (isset($_SESSION['admin']) && !empty($_SESSION['admin'])) {
 
 
 
-    <?php
+<?php
     require_once 'partials/footer.php';
     require_once 'partials/header-end.php';
 } else {

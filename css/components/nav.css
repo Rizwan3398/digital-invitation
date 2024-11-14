@@ -1,0 +1,795 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color : #b19361;
+    --secondary-color: #ffffff;
+    --background-color : #FBEDD6;
+    --ascent-color: #24262B;
+    --hover-color : #1E90FF;
+    --error-color : #e74c3c;
+}
+
+
+/* Header styling starts here */
+
+header {
+    font-family: Montserrat;
+    font-size: 1em;
+    font-weight: 500;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    padding: 0.7em 0;
+}
+
+.top-nav > div {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    width: 75%;
+    overflow: hidden;
+}
+
+.top-nav .info {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.top-nav .info::-webkit-scrollbar {
+    display: none;
+}
+
+.top-nav .info > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.4s linear;
+    line-height: 1;
+    flex: 1 0 100%;
+    scroll-snap-align: center;
+}
+
+.top-nav .info > div#left-info {
+    transform: translateX(-100%);
+}
+
+.top-nav .info > div#right-info {
+    transform: translateX(100%);
+}
+
+.top-nav .info > div#left-info.active {
+    transform: translateX(0);
+}
+
+.top-nav .info > div#right-info.active {
+    transform: translateX(-100%);
+}
+
+.top-nav .info > div > p {
+    width: 100%;
+    user-select: none;
+}
+
+.top-nav .info > div > p > i {
+    margin-left: 2%;
+}
+
+.top-nav > i {
+    cursor: pointer;
+    transition: scale 0.2s ease-in-out;
+    width: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: normal;
+}
+
+.top-nav i:hover {
+    scale: 1.1;
+}
+
+.top-nav i:active {
+    scale: 0.9;
+}
+
+@media (max-width:576px) {
+    header {
+        font-size: 0.8em;
+    }
+    .top-nav {
+        width: 100%;
+    }
+    .top-nav > div {
+        width: 85%;
+    }
+    .top-nav .info > div {
+        line-height: 1.5;
+    }
+}
+
+/* Header styling ends here */
+
+
+/* Navbar styling starts here */
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1%;
+    width: 98%;
+}
+
+.navbar .logo {
+    font-family: Itim;
+    font-size: 3em;
+    width: max-content;
+    color: var(--ascent-color);
+    cursor: pointer;
+    line-height: 1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar .search-bar {
+    width: 18%;
+    border: 2px solid var(--primary-color);
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 4%;
+    overflow: hidden;
+    font-size: 1em;
+    font-family: Roboto;
+    width: 100%;
+}
+
+.search-bar i {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 1.2em;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar i::before {
+    transition: all 0.2s linear;
+}
+
+.search-bar i:hover::before {
+    scale: 1.1;
+}
+
+.search-bar i:active::before {
+    scale: 0.9;
+}
+
+.navbar .navigations {
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6%;
+    font-family: Montserrat;
+    font-weight: 500;
+}
+
+.navigations a,
+.navigations .category-section .title {
+    transition: all 0.2s linear;
+}
+
+.navigations > a:hover,
+.navigations .category-section .title:hover {
+    scale: 1.1;
+}
+
+.navigations .category-section .title,
+.navigations .category-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5%;
+    cursor: pointer;
+    position: relative;
+}
+
+.navbar .login-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 1.2em;
+    border: none;
+    width: 10%;
+    padding: 0.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s linear;
+}
+
+.navbar .login-btn:hover {
+    box-shadow: -1px 3px 5px 0 rgb(146, 146, 146);
+}
+
+.navbar .category-modal {
+    position: absolute;
+    width: auto;
+    top: -1500%;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    z-index: 3;
+    box-shadow: 1px 1px 5px 0 var(--ascent-color);
+    padding: 1.5em;
+    display: none;
+    justify-content: center;
+    align-items: start;
+    height: 2500%;
+    max-height: 2500%;
+    transition: all 0.2s linear;
+    max-width: 800%;
+    overflow-x: scroll;
+}
+
+.navbar .category-modal::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.navbar .category-modal::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #b19361;
+}
+
+.navbar .category-modal::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+.category-modal .categories {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: max-content;
+    flex-direction: column;
+    gap: 1em;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.category-modal .categories a {
+    display: flex;
+    justify-content: start;
+    gap: 1em;
+    align-items: center;
+    width: 20%;
+    transition: all 0.2s linear;
+    font-size: 0.9em;
+    text-wrap: balance;
+}
+
+.category-modal .categories a > p {
+    width: max-content;
+}
+
+.category-modal .categories a > img {
+    width: 15%;
+}
+
+.category-modal .categories a:hover {
+    translate: 10px 0;
+    color: #b19361;
+}
+
+/* Navbar styling ends here */
+
+
+
+/* Login Modal styling starts here */
+
+.login-modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 998;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.login-modal .login-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: white;
+    border-radius: 15px;
+    height: 80%;
+    width: 55%;
+    overflow: hidden;
+}
+
+.login-content > div {
+    width: 48%;
+    height: 100%;
+}
+
+.login-content .left {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: #e8d1aa;
+    z-index: 3;
+}
+
+.login-content .img-container {
+    padding: 1.5em;
+}
+
+.login-content .img-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.login-content .right {
+    padding: 0 2%;
+    margin-top: 10%;
+    position: relative;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.right .close-btn {
+    position: absolute;
+    top: 4%;
+    right: 5%;
+    margin-top: -10%;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.right > div:not(.close-btn) {
+    width: 100%;
+    position: relative;
+    left: 0%;
+    translate: -100% 0;
+    z-index: -1;
+    transition: all 1s linear;
+}
+
+.right > div.signup-container {
+    left: 100%;
+}
+
+.right > div.reset-container.active {
+    top: 7%;
+    left: -100%;
+    translate: -112% 0%;
+    z-index: 2;
+    background: white;
+    height: 83%;
+}
+
+.right > .signin-container.active {
+    left: 0%;
+    translate: 0% 0%;
+    z-index: 2;
+}
+
+.right > .signup-container.active {
+    left: 0%;
+    translate: -106% 0%;
+    z-index: 2;
+}
+
+.right > .reset-container {
+    top: 7%;
+    left: 0%;
+    translate: -212% 0%;
+    z-index: 2;
+}
+
+.right .title {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.right .content p {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 1.25em;
+    margin-top: 5%;
+    color: rgb(98, 98, 98);
+}
+
+.right .content span {
+    font-family: Itim;
+    font-size: 1.5em;
+}
+
+.right .input-form {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10%;
+    gap: 0.5em;
+}
+
+.right .input-form > div:not(.forgot-pass, .pe_signin_button) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    padding: 3% 1%;
+    border-bottom: 2px solid rgb(146, 146, 146);
+}
+
+.right .input-form label.active span:not(.show-pass) {
+    top: -70%;
+    left: 0;
+    translate: 0% 0%;
+    font-size: 0.8em;
+}
+
+.right .input-form label {
+    position: relative;
+    width: 90%;
+    font-family: Roboto;
+}
+
+.right .input-form i {
+    font-size: 0.8em;
+    color: rgb(146, 146, 146);
+}
+
+.right .input-form input {
+    border: none;
+    outline: none;
+    width: 96%;
+    padding: 2%;
+    background: transparent;
+}
+
+.right .input-form div:not(.pe_signin_button) span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: max-content;
+    cursor: text;
+    transition: all 0.2s linear;
+}
+
+.right .input-form div:not(.pe_signin_button) span.show-pass {
+    left: 95%;
+    cursor: pointer;
+}
+
+.right .forgot-pass {
+    align-self: self-end;
+    font-size: 0.8em;
+    width: max-content;
+    cursor: pointer;
+    padding-right: 15%;
+    font-family: 'Open Sans';
+    display: none; /*Temporary*/
+}
+
+.right .forgot-pass:hover {
+    text-decoration: underline;
+    color: #b19361;
+}
+
+.right .signin {
+    width: 50%;
+    padding: 3%;
+    border-radius: 40px;
+    background: #b19361;
+    border: 1px solid #b19361;
+    outline: none;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 5%;
+    transition: all 0.2s linear;
+}
+
+.right .reset-btn {
+    width: 90%;
+}
+
+.right .signin:disabled {
+    background-color: #746e6e;
+    color: #24262B;
+    cursor: not-allowed;
+}
+
+.right .signin:not(:disabled):hover,
+.pe_signin_button > button:hover {
+    box-shadow: -2px 2px 5px 0 #746e6e;
+}
+
+.right .create-account {
+    margin-top: 10%;
+    font-family: 'Open Sans';
+}
+
+.create-account hr {
+    border: none;
+    outline: none;
+    border-top: 2px solid rgb(146, 146, 146);
+    margin-bottom: 2%;
+}
+
+.create-account p {
+    font-size: 0.9em;
+}
+
+.create-account span {
+    color: #b19361;
+    cursor: pointer;
+}
+
+.create-account span:hover {
+    text-decoration: underline;
+}
+
+.user-dashboard {
+    width: 3%;
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-dashboard .user-icon,
+.user-dashboard .hamburger {
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+.user-dashboard .hamburger {
+    display: none;
+}
+
+.user-dashboard .user-icon:hover,
+.user-dashboard .hamburger:hover {
+    scale: 1.05;
+}
+
+.user-dashboard .user-icon img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s linear;
+}
+
+.user-dashboard .dashboard {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 450%;
+    gap: 1em;
+    top: 100%;
+    right: 0;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    z-index: 3;
+    box-shadow: 1px 1px 5px 0 var(--ascent-color);
+    padding: 1em;
+    font-family: Inter;
+    font-size: 1.2em;
+}
+
+.user-dashboard .dashboard .user-name span {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.user-dashboard .dashboard .categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.user-dashboard .dashboard .categories a {
+    transition: all 0.2s linear;
+}
+
+.user-dashboard .dashboard .categories a:hover {
+    translate: 10px 0;
+}
+
+.user-dashboard .login-btn {
+    width: 80%;
+    font-size: 0.9em;
+}
+
+.signin-container .error,
+.signup-container .error,
+.reset-container .error {
+    display: none;
+    color: red;
+    font-family: Inter;
+    margin-top: 5%;
+    font-size: 0.9em;
+
+}
+
+
+@media (max-width: 768px) {
+    .user-dashboard .dashboard {
+        width: 500%;
+    }
+
+    .user-dashboard {
+        display: flex;
+        width: 7%;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .user-dashboard .hamburger {
+        display: flex;
+        font-size: 2.5em;
+        justify-content: center;
+    }
+
+    .navbar {
+        justify-content: space-between;
+        padding: 5%;
+        width: 90%;
+    }
+
+    .navbar .logo {
+        font-size: 2em;
+    }
+
+    .navbar .navigations {
+        display: none;
+    }
+
+    .navbar .search-bar {
+        width: 50%;
+    }
+
+    .navbar > .login-btn {
+        display: none !important;
+    }
+}
+
+@media (max-width:768px) {
+    .navbar {
+        padding: 2%;
+        width: 96%;
+    }
+}
+
+@media (max-width:768px) {
+    .login-modal .login-content {
+        width: 90%;
+        height: 60%;
+    }
+}
+
+
+@media (max-width:576px) {
+    .login-modal .login-content {
+        height: 70%;
+        width: 80%;
+    }
+
+    .login-content .left {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        background: white;
+    }
+
+    .login-content .img-container img {
+        mix-blend-mode: darken;
+        opacity: 0.1;
+    }
+
+    .login-content .right {
+        width: 100%;
+        margin-top: 20%;
+    }
+
+    .right .input-form {
+        gap: 1.5em;
+        margin-top: 15%;
+    }
+
+    .right .close-btn {
+        z-index: 5;
+    }
+
+    .right .content p {
+        margin-top: 0;
+        margin-bottom: 5%;
+    }
+
+    .right .create-account {
+        margin-top: 20%;
+    }
+
+    .create-account hr {
+        width: 85%;
+        margin: 0 auto;
+        margin-bottom: 2%;
+    }
+}
+
+/* Login Modal styling ends here */
+
+
+
+
+/* Loader Styling starts here */
+
+.loader-modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 998;
+    overflow: auto;
+    background-color: rgba(187, 187, 187, 0.4);
+}
+
+/* Loader Styling ends here */
